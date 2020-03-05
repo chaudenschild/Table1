@@ -207,7 +207,6 @@ class Table1():
             self.insert_total_row(return_table=False)
 
         if self.colnames:
-            assert len(self.colnames) == len(self.table.columns)
             self.table = self.table.rename(columns=self.colnames)
 
         if self.row_ordering:
