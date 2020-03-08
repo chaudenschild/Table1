@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>table1 package &#8212; Table1 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="table1-package">
+<h1>table1 package<a class="headerlink" href="#table1-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-table1.table1">
+<span id="table1-table1-module"></span><h2>table1.table1 module<a class="headerlink" href="#module-table1.table1" title="Permalink to this headline">¶</a></h2>
+<p>table1.py</p>
+<p>The main Table1 module, containing the Table1 class</p>
+<dl class="class">
+<dt id="table1.table1.Table1">
+<em class="property">class </em><code class="sig-prename descclassname">table1.table1.</code><code class="sig-name descname">Table1</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">stratification_var</em>, <em class="sig-param">names</em>, <em class="sig-param">keep_one_vars=None</em>, <em class="sig-param">rownames=None</em>, <em class="sig-param">colnames=None</em>, <em class="sig-param">col_ordering=None</em>, <em class="sig-param">row_ordering=None</em>, <em class="sig-param">rounding_digits=1</em>, <em class="sig-param">include_overall=True</em>, <em class="sig-param">overall_colname='Overall'</em>, <em class="sig-param">total_row=True</em>, <em class="sig-param">deviation_measure_for_numeric='sd'</em>, <em class="sig-param">p_val=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Creates table 1 from pandas Dataframe and allows for export in docx, xls format</p>
+<dl class="simple">
+<dt>table<span class="classifier">pandas Dataframe</span></dt><dd><p>output table</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="table1.table1.Table1.column_reorder">
+<code class="sig-name descname">column_reorder</code><span class="sig-paren">(</span><em class="sig-param">order</em>, <em class="sig-param">return_table=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1.column_reorder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1.column_reorder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="table1.table1.Table1.create">
+<em class="property">static </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="table1.table1.Table1.insert_header">
+<code class="sig-name descname">insert_header</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">after</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1.insert_header"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1.insert_header" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="table1.table1.Table1.insert_total_row">
+<code class="sig-name descname">insert_total_row</code><span class="sig-paren">(</span><em class="sig-param">adornment='n = '</em>, <em class="sig-param">return_table=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1.insert_total_row"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1.insert_total_row" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="table1.table1.Table1.make_table">
+<code class="sig-name descname">make_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1.make_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1.make_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="table1.table1.Table1.plus_minus">
+<code class="sig-name descname">plus_minus</code><em class="property"> = '±'</em><a class="headerlink" href="#table1.table1.Table1.plus_minus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="table1.table1.Table1.row_reorder">
+<code class="sig-name descname">row_reorder</code><span class="sig-paren">(</span><em class="sig-param">var</em>, <em class="sig-param">order</em>, <em class="sig-param">return_table=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1.row_reorder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1.row_reorder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="table1.table1.Table1.to_excel">
+<code class="sig-name descname">to_excel</code><span class="sig-paren">(</span><em class="sig-param">fname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1.to_excel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1.to_excel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="table1.table1.Table1.to_word">
+<code class="sig-name descname">to_word</code><span class="sig-paren">(</span><em class="sig-param">fname</em>, <em class="sig-param">style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1.to_word"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1.to_word" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-table1">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-table1" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Table1</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Christian Haudenschild.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/table1.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
