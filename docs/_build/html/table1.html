@@ -44,8 +44,35 @@
 <em class="property">class </em><code class="sig-prename descclassname">table1.table1.</code><code class="sig-name descname">Table1</code><span class="sig-paren">(</span><em class="sig-param">df</em>, <em class="sig-param">stratification_var</em>, <em class="sig-param">names</em>, <em class="sig-param">keep_one_vars=None</em>, <em class="sig-param">rownames=None</em>, <em class="sig-param">colnames=None</em>, <em class="sig-param">col_ordering=None</em>, <em class="sig-param">row_ordering=None</em>, <em class="sig-param">rounding_digits=1</em>, <em class="sig-param">include_overall=True</em>, <em class="sig-param">overall_colname='Overall'</em>, <em class="sig-param">total_row=True</em>, <em class="sig-param">deviation_measure_for_numeric='sd'</em>, <em class="sig-param">p_val=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/table1/table1.html#Table1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#table1.table1.Table1" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Creates table 1 from pandas Dataframe and allows for export in docx, xls format</p>
-<dl class="simple">
-<dt>table<span class="classifier">pandas Dataframe</span></dt><dd><p>output table</p>
+<dl class="attribute">
+<dt id="table1.table1.Table1.table">
+<code class="sig-name descname">table</code><a class="headerlink" href="#table1.table1.Table1.table" title="Permalink to this definition">¶</a></dt>
+<dd><p>output table</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>pandas Dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Input dataframe</p></li>
+<li><p><strong>stratification_var</strong> (<em>str</em>) – Column stratification variable</p></li>
+<li><p><strong>names</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – Specifies variables that are to be in the table based on keys. Values contain name mapping for baseline variables to new names. Also  All following parameters and methods use the new names as reference.</p></li>
+<li><p><strong>keep_one_vars</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>]</em><em>, </em><em>optional</em>) – In the case of multilevel variables, allows one to pass name:level items such that within variable name, only the given level is retained as a single row (default:None)</p></li>
+<li><p><strong>rownames</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Specify rownames with format old name: new name (default:None)</p></li>
+<li><p><strong>colnames</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Specify colnames with format old name: new name (default:None)</p></li>
+<li><p><strong>col_ordering</strong> (<em>list</em><em>, </em><em>optional</em>) – Order of the stratification variable (default:None)</p></li>
+<li><p><strong>row_ordering</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>]</em><em>, </em><em>optional</em>) – Pass name:order items such that variable name is ordered according to order (default:None)</p></li>
+<li><p><strong>rouding_digits</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of digits to round data to (default:2)</p></li>
+<li><p><strong>include_overall</strong> (<em>bool</em><em>, </em><em>optional</em>) – Inserts a row-wise total column (default:True)</p></li>
+<li><p><strong>overall_colname</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of total column (default:’Overall’)</p></li>
+<li><p><strong>total_row</strong> (<em>bool</em><em>, </em><em>optional</em>) – Inserts a row with column-wise totals at top of table (default:True)</p></li>
+<li><p><strong>deviation_measure_for_numeric</strong> (<em>'str'</em>) – For numeric variables, select deviation measure - either ‘sd’ for standard deviation or ‘se’ for standard error of the mean (default:’sd’)</p></li>
+<li><p><strong>p_val</strong> (<em>bool</em>) – Calculate Pearson’s chi-squared test for independence for categorical data or one-way analysis of variance for continuous data and add p_value in a column</p></li>
+</ul>
 </dd>
 </dl>
 <dl class="method">

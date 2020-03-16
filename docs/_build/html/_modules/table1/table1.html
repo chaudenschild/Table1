@@ -52,42 +52,42 @@
 <span class="sd">    table : pandas Dataframe</span>
 <span class="sd">        output table</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pd.DataFrame</span>
+<span class="sd">        Input dataframe</span>
+<span class="sd">    stratification_var : str</span>
+<span class="sd">        Column stratification variable</span>
+<span class="sd">    names : Dict[str, str]</span>
+<span class="sd">        Specifies variables that are to be in the table based on keys. Values contain name mapping for baseline variables to new names. Also  All following parameters and methods use the new names as reference.</span>
+<span class="sd">    keep_one_vars : Dict[str, list], optional</span>
+<span class="sd">        In the case of multilevel variables, allows one to pass name:level items such that within variable name, only the given level is retained as a single row (default:None)</span>
+<span class="sd">    rownames : Dict[str, str], optional</span>
+<span class="sd">        Specify rownames with format old name: new name (default:None)</span>
+<span class="sd">    colnames : Dict[str, str], optional</span>
+<span class="sd">        Specify colnames with format old name: new name (default:None)</span>
+<span class="sd">    col_ordering : list, optional</span>
+<span class="sd">        Order of the stratification variable (default:None)</span>
+<span class="sd">    row_ordering : Dict[str, list], optional</span>
+<span class="sd">        Pass name:order items such that variable name is ordered according to order (default:None)</span>
+<span class="sd">    rouding_digits : int, optional</span>
+<span class="sd">        Number of digits to round data to (default:2)</span>
+<span class="sd">    include_overall : bool, optional</span>
+<span class="sd">        Inserts a row-wise total column (default:True)</span>
+<span class="sd">    overall_colname: str, optional</span>
+<span class="sd">        Name of total column (default:&#39;Overall&#39;)</span>
+<span class="sd">    total_row: bool, optional</span>
+<span class="sd">        Inserts a row with column-wise totals at top of table (default:True)</span>
+<span class="sd">    deviation_measure_for_numeric: &#39;str&#39;</span>
+<span class="sd">        For numeric variables, select deviation measure - either &#39;sd&#39; for standard deviation or &#39;se&#39; for standard error of the mean (default:&#39;sd&#39;)</span>
+<span class="sd">    p_val: bool</span>
+<span class="sd">        Calculate Pearson’s chi-squared test for independence for categorical data or one-way analysis of variance for continuous data and add p_value in a column</span>
+
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">plus_minus</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;</span><span class="se">\u00B1</span><span class="s1">&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">stratification_var</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">keep_one_vars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="n">rownames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colnames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col_ordering</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">row_ordering</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rounding_digits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_overall</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overall_colname</span><span class="o">=</span><span class="s1">&#39;Overall&#39;</span><span class="p">,</span> <span class="n">total_row</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">deviation_measure_for_numeric</span><span class="o">=</span><span class="s1">&#39;sd&#39;</span><span class="p">,</span> <span class="n">p_val</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        :param df : pd.DataFrame</span>
-<span class="sd">            Input dataframe</span>
-<span class="sd">        :param stratification_var : str</span>
-<span class="sd">            Column stratification variable</span>
-<span class="sd">        :param names : Dict[str, str]</span>
-<span class="sd">            Specifies variables that are to be in the table based on keys. Values contain name mapping for baseline variables to new names. Also  All following parameters and methods use the new names as reference.</span>
-<span class="sd">        :param keep_one_vars : Dict[str, list], optional</span>
-<span class="sd">            In the case of multilevel variables, allows one to pass name:level items such that within variable name, only the given level is retained as a single row (default:None)</span>
-<span class="sd">        :param rownames : Dict[str, str], optional</span>
-<span class="sd">            Specify rownames with format old name: new name (default:None)</span>
-<span class="sd">        :param colnames : Dict[str, str], optional</span>
-<span class="sd">            Specify colnames with format old name: new name (default:None)</span>
-<span class="sd">        :param col_ordering : list, optional</span>
-<span class="sd">            Order of the stratification variable (default:None)</span>
-<span class="sd">        :param row_ordering : Dict[str, list], optional</span>
-<span class="sd">            Pass name:order items such that variable name is ordered according to order (default:None)</span>
-<span class="sd">        :param rouding_digits : int, optional</span>
-<span class="sd">            Number of digits to round data to (default:2)</span>
-<span class="sd">        :param include_overall : bool, optional</span>
-<span class="sd">            Inserts a row-wise total column (default:True)</span>
-<span class="sd">        :param overall_colname: str, optional</span>
-<span class="sd">            Name of total column (default:&#39;Overall&#39;)</span>
-<span class="sd">        :param total_row: bool, optional</span>
-<span class="sd">            Inserts a row with column-wise totals at top of table (default:True)</span>
-<span class="sd">        :param deviation_measure_for_numeric: &#39;str&#39;</span>
-<span class="sd">            For numeric variables, select deviation measure - either &#39;sd&#39; for standard deviation or &#39;se&#39; for standard error of the mean (default:&#39;sd&#39;)</span>
-<span class="sd">        :param p_val: bool</span>
-<span class="sd">            Calculate Pearson’s chi-squared test for independence for categorical data or one-way analysis of variance for continuous data and add p_value in a column</span>
-<span class="sd">        &#39;&#39;&#39;</span>
+
         <span class="k">assert</span> <span class="n">deviation_measure_for_numeric</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;se&#39;</span><span class="p">,</span> <span class="s1">&#39;sd&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">colnames</span><span class="p">:</span>
             <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">colnames</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
