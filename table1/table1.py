@@ -1,11 +1,7 @@
-"""
-    table1.py
-
-    The main Table1 module, containing the Table1 class
-"""
-
-__author__ = 'Christian Haudenschild'
-
+import docx
+import numpy as np
+import pandas as pd
+import scipy.stats
 
 # TODO: Add kruskal-wallis for median[IQR]
 
@@ -19,42 +15,42 @@ class Table1():
     table : pandas Dataframe
         output table
 
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Input dataframe
-    stratification_var : str
-        Column stratification variable
-    names : Dict[str, str]
-        Specifies variables that are to be in the table based on keys. Values contain name mapping for baseline variables to new names. Also  All following parameters and methods use the new names as reference.
-    keep_one_vars : Dict[str, list], optional
-        In the case of multilevel variables, allows one to pass name:level items such that within variable name, only the given level is retained as a single row (default:None)
-    rownames : Dict[str, str], optional
-        Specify rownames with format old name: new name (default:None)
-    colnames : Dict[str, str], optional
-        Specify colnames with format old name: new name (default:None)
-    col_ordering : list, optional
-        Order of the stratification variable (default:None)
-    row_ordering : Dict[str, list], optional
-        Pass name:order items such that variable name is ordered according to order (default:None)
-    rouding_digits : int, optional
-        Number of digits to round data to (default:2)
-    include_overall : bool, optional
-        Inserts a row-wise total column (default:True)
-    overall_colname: str, optional
-        Name of total column (default:'Overall')
-    total_row: bool, optional
-        Inserts a row with column-wise totals at top of table (default:True)
-    deviation_measure_for_numeric: 'str'
-        For numeric variables, select deviation measure - either 'sd' for standard deviation or 'se' for standard error of the mean (default:'sd')
-    p_val: bool
-        Calculate Pearson’s chi-squared test for independence for categorical data or one-way analysis of variance for continuous data and add p_value in a column
-
     '''
     plus_minus = u'\u00B1'
 
     def __init__(self, df, stratification_var, names, keep_one_vars=None,  rownames=None, colnames=None, col_ordering=None, row_ordering=None, rounding_digits=1, include_overall=True, overall_colname='Overall', total_row=True, deviation_measure_for_numeric='sd', p_val=True):
-
+        '''
+        Parameters
+        ----------
+        df : pd.DataFrame
+            Input dataframe
+        stratification_var : str
+            Column stratification variable
+        names : Dict[str, str]
+            Specifies variables that are to be in the table based on keys. Values contain name mapping for baseline variables to new names. Also  All following parameters and methods use the new names as reference.
+        keep_one_vars : Dict[str, list], optional
+            In the case of multilevel variables, allows one to pass name:level items such that within variable name, only the given level is retained as a single row (default:None)
+        rownames : Dict[str, str], optional
+            Specify rownames with format old name: new name (default:None)
+        colnames : Dict[str, str], optional
+            Specify colnames with format old name: new name (default:None)
+        col_ordering : list, optional
+            Order of the stratification variable (default:None)
+        row_ordering : Dict[str, list], optional
+            Pass name:order items such that variable name is ordered according to order (default:None)
+        rouding_digits : int, optional
+            Number of digits to round data to (default:2)
+        include_overall : bool, optional
+            Inserts a row-wise total column (default:True)
+        overall_colname: str, optional
+            Name of total column (default:'Overall')
+        total_row: bool, optional
+            Inserts a row with column-wise totals at top of table (default:True)
+        deviation_measure_for_numeric: 'str'
+            For numeric variables, select deviation measure - either 'sd' for standard deviation or 'se' for standard error of the mean (default:'sd')
+        p_val: bool
+            Calculate Pearson’s chi-squared test for independence for categorical data or one-way analysis of variance for continuous data and add p_value in a column
+        '''
         assert deviation_measure_for_numeric in ['se', 'sd']
         if colnames:
             assert isinstance(colnames, dict)
@@ -143,7 +139,7 @@ class Table1():
         if self.keep_one_vars and self.names[var] in self.keep_one_vars.keys():
             to_drop = []
             for i in group.index:
-                if i in self.rownames.keys():
+                if self.rownames and i in self.rownames.keys():
                     if self.rownames[i] != self.keep_one_vars[self.names[var]]:
                         to_drop.append(i)
                 else:
@@ -222,12 +218,14 @@ class Table1():
 
         if self.col_ordering:
             assert len(self.col_ordering) == len(
-                self.table.columns), f'Got {len(self.col_ordering)} in col_ordering, expected {len(self.table.columns)}'
+                self.table.columns), f'Got {len(self.col_ordering)} in col_ordering, expected {len(self.table.columns)}: {self.table.columns}'
             self.column_reorder(self.col_ordering)
 
     def column_reorder(self, order, return_table=True):
-
-        assert all([o in self.table.columns for o in order])
+        try:
+            assert all([o in self.table.columns for o in order])
+        except AssertionError:
+            print([o for o in order if o not in self.table.columns])
 
         table = self.table[order]
 
